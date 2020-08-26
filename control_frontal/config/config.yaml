@@ -1,0 +1,8 @@
+distance: [2.0, 3.0, 10]
+yaw_reference: [35.0, 80.0, 0]
+alt_ref: [1.5, 2.0, 1.0]
+kp_yaw: 1.5
+kp_alt: 1.2
+kp: 0.5
+model: 11
+kd_yaw: 79
