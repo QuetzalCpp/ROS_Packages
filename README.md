@@ -1,2 +1,2 @@
-# IntRob
+# ROS packages
 Tutorial for IntRob
