@@ -17,9 +17,9 @@ KeyPress::KeyPress(QWidget *parent):
 {
 	ROS_INFO("Init Keyboard Controller");
 	
-	pubTakeoff1_ = nh_.advertise<std_msgs::Empty>("/ardrone/takeoff", 3);
-	pubLand1_ = nh_.advertise<std_msgs::Empty>("/ardrone/land", 3);
-	pubCommandPilot1_ = nh_.advertise<geometry_msgs::Twist>("/cmd_vel", 3);
+	pubTakeoff1_ = nh_.advertise<std_msgs::Empty>("/bebop/takeoff", 3);
+	pubLand1_ = nh_.advertise<std_msgs::Empty>("/bebop/land", 3);
+	pubCommandPilot1_ = nh_.advertise<geometry_msgs::Twist>("/bebop/cmd_vel", 3);
 	
 	OvR = nh_.advertise<std_msgs::Int8>("/keyboard/override", 3);
 	
@@ -119,7 +119,7 @@ void KeyPress::keyPressEvent(QKeyEvent *event)
 		override.data = 6;
 		OvR.publish(override);
 		send_command = false;
-		Command->setText("FORMATION");
+		Command->setText("AUTONOMOUS MODE");
 		setLayout(grid);
 		
 	}
@@ -170,13 +170,13 @@ void KeyPress::keyPressEvent(QKeyEvent *event)
 	}
 	else if(event->key() == Qt::Key_Up)
 	{	
-		altitude += altitude_speed;
+		altitude += speed;
 		Command->setText("UP");
 		setLayout(grid);
 	}
 	else if(event->key() == Qt::Key_Down)
 	{	
-		altitude -= altitude_speed;
+		altitude -= speed;
 		Command->setText("DOWN");
 		setLayout(grid);
 	}
